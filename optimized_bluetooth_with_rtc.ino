@@ -11,8 +11,8 @@ bool manualMode = false;
 bool ledOn = false;
 unsigned long previousMillis = 0;
 unsigned long lastCommandMillis = 0;
-const long interval = 5000;
-const long manualTimeout = 30000; // 10 minutes in milliseconds
+const long interval = 30000;
+const long manualTimeout = 30000; // 30 seconds in milliseconds
 
 void setup() {
   Serial.begin(9600);
