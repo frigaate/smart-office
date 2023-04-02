@@ -1,8 +1,8 @@
 #include <RTClib.h>
 
-const int ledPin1 = 13;
-const int ledPin2 = 11;
-const int fanPin = 12;
+const int ledPin1 = 11;
+const int ledPin2 = 12;
+const int fanPin = 13;
 const int acPin = 10;
 
 int warm_up;
@@ -72,6 +72,7 @@ void manualControl() {
 }
 
 void automaticControl() {
+
   unsigned long currentMillis = millis();
 
   // check if interval has passed since last switch toggle
@@ -79,9 +80,9 @@ void automaticControl() {
     previousMillis = currentMillis;
     if (rtcModule() == 1) {
       digitalWrite(ledPin1, !digitalRead(ledPin1));
-      digitalWrite(ledPin2, !digitalRead(ledPin2));
-      digitalWrite(acPin, !digitalRead(ledPin1));
-      digitalWrite(fanPin, !digitalRead(ledPin1));// toggle all switches
+      digitalWrite(acPin, digitalRead(ledPin1));
+      digitalWrite(fanPin, digitalRead(ledPin1));
+      digitalWrite(ledPin2, !digitalRead(ledPin1));// toggle all switches
       Serial.println("Toggling Switches");
     }
   }
